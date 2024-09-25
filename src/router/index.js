@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import Navigation from '../components/Navigation.vue';
 import About from '../components/About.vue';
 import Header from '../components/Header.vue';
 import Services from '../components/Services.vue';
@@ -19,7 +20,12 @@ import Vegetarianas from "../views/RecetasVegetarianas.vue";
 const routes = [
   {
     path: '/',
-    components: { default: Header, about: About, services: Services }
+    components: { 
+      navigation: Navigation, 
+      header: Header, 
+      about: About, 
+      services: Services 
+    }
   },
   { path: '/login', component: Login },
   { path: '/recetario', component: Recetario },
@@ -34,6 +40,7 @@ const routes = [
   { path: '/postres', component: Postres },
   { path: '/vegana', component: Vegana }
 ];
+
 
 const router = createRouter({
   history: createWebHistory(),

@@ -170,7 +170,7 @@
                 {
                     user: {
                     name: 'Carlos Perez',
-                    image: Usuariologo
+                    image: Usuariologo2
                     },
                     date: '2024-09-02', // fecha del comentario
                     text: 'Me encanta esta receta, es súper refrescante y fácil de hacer.'
