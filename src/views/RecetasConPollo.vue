@@ -1,89 +1,97 @@
 <template>
-    <div class="page-background">
-      <Navigation /> <!-- Aquí se usa el componente Navigation -->
-      <div class="header-container">
-        <header class="header">
-          <h1>Recetas Bajas en Sodio</h1>
-          <input
-            type="text"
-            placeholder="Buscar recetas..."
-            class="search-bar"
-            v-model="searchTerm"
-          />
-          <select v-model="selectedTime" class="time-filter">
-            <option value="">Todos los tiempos</option>
-            <option value="Hasta 30 minutos">Hasta 30 minutos</option>
-            <option value="Hasta 45 minutos">Hasta 45 minutos</option>
-            <option value="Hasta 1 hora">Hasta 1 hora</option>
-          </select>
-          <button @click="goBack" class="back-button">Regresar</button>
-        </header>
-      </div>
-      
-      <div class="recipes-container">
-        <div 
-          v-for="recipe in filteredRecipes" 
-          :key="recipe.name" 
-          class="recipe-item" 
-          @click="openModal(recipe)"
-        >
-          <img :src="recipe.image" :alt="recipe.name" />
-          <p>{{ recipe.name }}</p>
+    <div>
+      <Navigation />
+      <div class="page-background">
+        <div class="header-container">
+          <header class="header">
+            <h1>Recetas con pollo </h1>
+            <input
+              type="text"
+              placeholder="Buscar recetas..."
+              class="search-bar"
+              v-model="searchTerm"
+            />
+            <select v-model="selectedTime" class="time-filter">
+              <option value="">Todos los tiempos</option>
+              <option value="Hasta 30 minutos">Hasta 30 minutos</option>
+              <option value="Hasta 45 minutos">Hasta 45 minutos</option>
+              <option value="Hasta 1 hora">Hasta 1 hora</option>
+            </select>
+            <button @click="goBack" class="back-button">Regresar</button>
+          </header>
         </div>
-      </div>
   
-      <!-- Modal para mostrar los detalles de la receta -->
-      <div v-if="selectedRecipe" class="modal-overlay" @click="closeModal">
-        <div class="modal-content" @click.stop>
-          <div v-if="showComments">
-            <h2>Comentarios</h2>
-            <ul v-if="selectedRecipe.comments.length > 0">
-              <li v-for="(comment, index) in selectedRecipe.comments" :key="index" class="comment">
-                <div class="comment-header">
-                  <img :src="comment.user.image" :alt="comment.user.name" class="user-image" />
-                  <div>
-                    <p><strong>{{ comment.user.name }}</strong></p>
-                    <p>{{ comment.date }}</p>
+        <div class="recipes-container">
+          <div
+            v-for="recipe in filteredRecipes"
+            :key="recipe.name"
+            class="recipe-item"
+            @click="openModal(recipe)"
+          >
+            <img :src="recipe.image" :alt="recipe.name" />
+            <p>{{ recipe.name }}</p>
+          </div>
+        </div>
+  
+        <div v-if="selectedRecipe" class="modal-overlay" @click="closeModal">
+          <div class="modal-content" @click.stop>
+            <div v-if="showComments">
+              <h2>Comentarios</h2>
+              <ul v-if="selectedRecipe.comments.length > 0">
+                <li
+                  v-for="(comment, index) in selectedRecipe.comments"
+                  :key="index"
+                  class="comment"
+                >
+                  <div class="comment-header">
+                    <img :src="comment.user.image" :alt="comment.user.name" class="user-image" />
+                    <div>
+                      <p><strong>{{ comment.user.name }}</strong></p>
+                      <p>{{ comment.date }}</p>
+                    </div>
                   </div>
-                </div>
-                <p>{{ comment.text }}</p>
-              </li>
-            </ul>
-            <p v-else>No hay comentarios aún. ¡Sé el primero en comentar!</p>
+                  <p>{{ comment.text }}</p>
+                </li>
+              </ul>
+              <p v-else>No hay comentarios aún. ¡Sé el primero en comentar!</p>
   
-            <textarea v-model="newComment" placeholder="Escribe tu comentario aquí..."></textarea>
-            <button @click="addComment">Publicar comentario</button>
-          </div>
+              <textarea
+                v-model="newComment"
+                placeholder="Escribe tu comentario aquí..."
+              />
+              <button @click="addComment">Publicar comentario</button>
+            </div>
   
-          <div v-else>
-            <h2>{{ selectedRecipe.name }}</h2>
-            <h3>Publicado por:</h3>
-            <p><strong>{{ selectedRecipe.user.name }}</strong> ({{ selectedRecipe.user.email }})</p>
-            <p>Fecha de publicación: {{ selectedRecipe.user.datePublished }}</p>
-            
-            <h3>Ingredientes:</h3>
-            <ul>
-              <li v-for="(ingredient, index) in selectedRecipe.ingredients" :key="index">
-                {{ ingredient }}
-              </li>
-            </ul>
+            <div v-else>
+              <h2>{{ selectedRecipe.name }}</h2>
+              <h3>Publicado por:</h3>
+              <p><strong>{{ selectedRecipe.user.name }}</strong> ({{ selectedRecipe.user.email }})</p>
+              <p>Fecha de publicación: {{ selectedRecipe.user.datePublished }}</p>
   
-            <h3>Pasos:</h3>
-            <ol>
-              <li v-for="(step, index) in selectedRecipe.steps" :key="index">
-                {{ step }}
-              </li>
-            </ol>
-          </div>
+              <h3>Ingredientes:</h3>
+              <ul>
+                <li v-for="(ingredient, index) in selectedRecipe.ingredients" :key="index">
+                  {{ ingredient }}
+                </li>
+              </ul>
   
-          <div class="modal-buttons">
-            <button @click="toggleCommentsView">
-              {{ showComments ? 'Ver Ingredientes/Pasos' : 'Ver Comentarios' }}
-            </button>
-            <button @click="toggleFavorite" class="favorite-button">
-              {{ isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos' }}
-            </button>
-            <button @click="closeModal">Cerrar</button>
+              <h3>Pasos:</h3>
+              <ol>
+                <li v-for="(step, index) in selectedRecipe.steps" :key="index">
+                  {{ step }}
+                </li>
+              </ol>
+            </div>
+  
+            <div class="modal-buttons">
+              <button @click="toggleCommentsView">
+                {{ showComments ? 'Ver Ingredientes/Pasos' : 'Ver Comentarios' }}
+              </button>
+              <button @click="toggleFavorite" class="favorite-button">
+                {{ isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos' }}
+              </button>
+              <button @click="closeModal">Cerrar</button>
+            </div>
           </div>
         </div>
       </div>
@@ -91,8 +99,7 @@
   </template>
   
   <script>
-
- import { Navigation } from '../components/Navigation.vue';
+  import { Navigation } from '../components/Navigation.vue';
   import EnsaladaItaliana from './img/imgsodio/ensaladacaprese.png';
   import Bebidarosa from './img/imgsodio/bebida.png';
   import PandeBana from './img/imgsodio/PanBanana.png';
@@ -101,7 +108,7 @@
   import "../assets/css/RecetasbajoEnsodio.css";
 
   export default {
-    name:"RecetasBajoensodio",
+    name:"RecetasConPollo",
 
     components: {
       Navigation,
@@ -145,39 +152,39 @@
             ],
           },
           {
-                name: 'Agua fresca de sandía y arándanos rojos',
-                user: {
-                name: 'Lucía Martínez',
-                email: 'lucia@example.com',
-                datePublished: '2024-09-01'
-                },
-                image: Bebidarosa,
-                link: '/bebidarosa',
-                ingredients: [
-                '2 1/2 libras de sandía sin semillas', 
-                '1/4 de taza de jugo de lima fresco', 
-                '1 taza de jugo de arándanos rojos', 
-                '1 lima cortada en rodajas'
-                ],
-                steps: [
-                'Licúa la sandía hasta obtener una consistencia suave.', 
-                'Pasa el puré por un tamiz fino para eliminar la pulpa.', 
-                'Añade jugos de arándano y lima y refrigera hasta enfriar.', 
-                'Sirve con rodajas de lima.'
-                ],
-                timeCategory: 'Hasta 45 minutos',
-                comments: [
-                {
-                    user: {
-                    name: 'Carlos Perez',
-                    image: Usuariologo
-                    },
-                    date: '2024-09-02', // fecha del comentario
-                    text: 'Me encanta esta receta, es súper refrescante y fácil de hacer.'
-                },
+            name: 'Agua fresca de sandía y arándanos rojos',
+            user: {
+            name: 'Lucía Martínez',
+            email: 'lucia@example.com',
+            datePublished: '2024-09-01'
+            },
+            image: Bebidarosa,
+            link: '/bebidarosa',
+            ingredients: [
+            '2 1/2 libras de sandía sin semillas', 
+            '1/4 de taza de jugo de lima fresco', 
+            '1 taza de jugo de arándanos rojos', 
+            '1 lima cortada en rodajas'
             ],
-          },
-          {
+            steps: [
+            'Licúa la sandía hasta obtener una consistencia suave.', 
+            'Pasa el puré por un tamiz fino para eliminar la pulpa.', 
+            'Añade jugos de arándano y lima y refrigera hasta enfriar.', 
+            'Sirve con rodajas de lima.'
+            ],
+            timeCategory: 'Hasta 45 minutos',
+            comments: [
+            {
+                user: {
+                name: 'Carlos Perez',
+                image: Usuariologo2
+                },
+                date: '2024-09-02', // fecha del comentario
+                text: 'Me encanta esta receta, es súper refrescante y fácil de hacer.'
+            },
+            ],
+        },
+        {
                 name: 'Pan de banana integral',
                 user: {
                 name: 'Lucía Martínez',
@@ -213,6 +220,7 @@
                 },
             ],
           },
+
         ],
         searchTerm: '',
         selectedRecipe: null,
@@ -262,4 +270,3 @@
     },
   };
   </script>
-  

@@ -1,6 +1,6 @@
-<template>
+<template> 
   <div>
-    <Navigation />
+    <Navigation /> <!-- Menú de navegación global -->
     <router-view /> <!-- Aquí se renderizan los componentes según las rutas -->
   </div>
 </template>

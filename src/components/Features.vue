@@ -37,6 +37,41 @@
   </script>
   
   <style scoped>
-  /* Aquí puedes agregar los estilos específicos de este componente si es necesario */
+  #about {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+  }
+  
+  .about-title {
+    color: #2c3e50;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .about-subtitle {
+    color: #16a085;
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .about-description {
+    color: #34495e;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+  }
+  
+  .list-style ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .list-style ul li {
+    color: #2980b9;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
   </style>
   

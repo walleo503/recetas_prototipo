@@ -33,7 +33,7 @@
   <style scoped>
   /* Fondo del login */
   .login-container {
-    background: url('@/assets/backGraund.jpg'); /* Asegúrate de que la imagen esté en la carpeta "assets" */
+    background: url('../views/img/backGraund.jpg'); /* Asegúrate de que la imagen esté en la carpeta "assets" */
     display: flex;
     justify-content: center;
     align-items: center;

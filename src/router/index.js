@@ -4,16 +4,17 @@ import Header from '../components/Header.vue';
 import Services from '../components/Services.vue';
 import Login from '../views/Login.vue';
 import Recetario from '../views/Recetario.vue';
-import Vegetarianas from '../views/Vegetarianas.vue';
-import BajoSodio from '../views/BajoSodio.vue';
-import Carne from '../views/Carne.vue';
-import Frutas from '../views/Frutas.vue';
-import Legumbres from '../views/Legumbres.vue';
-import Pastas from '../views/Pastas.vue';
-import Pescado from '../views/Pescado.vue';
-import Pollo from '../views/Pollo.vue';
-import Postres from '../views/Postres.vue';
-import Vegana from '../views/Vegana.vue';
+import BajoSodio from '../views/RecetasBajoensodio.vue';
+import Carne from '../views/RecetasConCarne.vue';
+import Frutas from '../views/RecetasConFrutas.vue';
+import Legumbres from '../views/RecetasConLegumbres.vue';
+import Pastas from '../views/RecetasConPasta.vue';
+import Pescado from '../views/RecetasConPescado.vue';
+import Pollo from '../views/RecetasConPollo.vue';
+import Postres from '../views/RecetasPostres.vue';
+import Vegana from '../views/RecetasVeganas.vue';
+import Vegetarianas from "../views/RecetasVegetarianas.vue";
+
 
 const routes = [
   {
