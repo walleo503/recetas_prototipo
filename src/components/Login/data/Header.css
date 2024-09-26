@@ -1,0 +1,40 @@
+/* Header */
+#header {
+  height: 100vh;
+  background-image: url('../data/fondo.webp'); /* Usa la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+#header .intro-text {
+  text-align: center;
+}
+
+#header h1 {
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: rgb(138, 138, 138);
+  margin-bottom: 20px;
+}
+
+#header .btn-custom {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+#header .btn-custom:hover {
+  background-color: #2980b9;
+}
+
+  

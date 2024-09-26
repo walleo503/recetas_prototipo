@@ -47,7 +47,7 @@
   </template>
   
   <script>
-  import "../components/Login/data/About.css";
+  import "../components/Login/data/Navigation.css";
   
   export default {
     name: "NavigationSection"

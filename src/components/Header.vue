@@ -21,7 +21,7 @@
   </template>
   
   <script>
-  import "../components/Login/data/About.css";
+  import "../components/Login/data/Header.css";
   
   export default {
     name: "HeaderSection",

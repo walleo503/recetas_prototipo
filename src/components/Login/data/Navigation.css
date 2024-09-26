@@ -1,0 +1,46 @@
+/* Navegación */
+#menu {
+    background-color: white;
+    border-bottom: 1px solid #eaeaea;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+  }
+  
+  #menu .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  #menu .navbar-brand img {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  #menu .nav {
+    float: right;
+    font-size: 16px;
+  }
+  
+  #menu .nav li {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  
+  #menu .nav li a {
+    color: #333;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s;
+  }
+  
+  #menu .nav li a:hover {
+    color: #3498db; /* Cambia a un color azul al hacer hover */
+  }
+  
